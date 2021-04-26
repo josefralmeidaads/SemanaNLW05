@@ -1,0 +1,156 @@
+webpackHotUpdate_N_E("pages/_app",{
+
+/***/ "./src/contexts/PlayerContext.tsx":
+/*!****************************************!*\
+  !*** ./src/contexts/PlayerContext.tsx ***!
+  \****************************************/
+/*! exports provided: PlayerContext, PlayerProvider, usePlayer */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* WEBPACK VAR INJECTION */(function(module) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PlayerContext", function() { return PlayerContext; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PlayerProvider", function() { return PlayerProvider; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "usePlayer", function() { return usePlayer; });
+/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-dev-runtime */ "./node_modules/react/jsx-dev-runtime.js");
+/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+
+
+var _jsxFileName = "C:\\NLW05\\web\\src\\contexts\\PlayerContext.tsx",
+    _this = undefined,
+    _s = $RefreshSig$(),
+    _s2 = $RefreshSig$();
+
+
+var PlayerContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_1__["createContext"])({});
+var PlayerProvider = function PlayerProvider(_ref) {
+  _s();
+
+  var children = _ref.children;
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])([]),
+      episodeList = _useState[0],
+      setEpisodeList = _useState[1];
+
+  var _useState2 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false),
+      isPlaying = _useState2[0],
+      setIsPlaying = _useState2[1];
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(0),
+      currentEpisodeIndex = _useState3[0],
+      setCurrentEpisodeIndex = _useState3[1];
+
+  var play = function play(episode) {
+    setEpisodeList([episode]);
+    setCurrentEpisodeIndex(0);
+    setIsPlaying(true);
+  };
+
+  var pause = function pause(episode) {
+    setIsPlaying(false);
+  };
+
+  return /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__["jsxDEV"])(PlayerContext.Provider, {
+    value: {
+      currentEpisodeIndex: currentEpisodeIndex,
+      episodeList: episodeList,
+      isPlaying: isPlaying,
+      play: play
+    },
+    children: children
+  }, void 0, false, {
+    fileName: _jsxFileName,
+    lineNumber: 42,
+    columnNumber: 5
+  }, _this);
+};
+
+_s(PlayerProvider, "FYThUPiyGCPUBm4cPNVH/JgCWm4=");
+
+_c = PlayerProvider;
+function usePlayer() {
+  _s2();
+
+  var _useContext = Object(react__WEBPACK_IMPORTED_MODULE_1__["useContext"])(PlayerContext),
+      play = _useContext.play,
+      currentEpisodeIndex = _useContext.currentEpisodeIndex,
+      episodeList = _useContext.episodeList,
+      isPlaying = _useContext.isPlaying;
+
+  return {
+    play: play,
+    currentEpisodeIndex: currentEpisodeIndex,
+    episodeList: episodeList,
+    isPlaying: isPlaying
+  };
+}
+
+_s2(usePlayer, "70znbC5s9/9KZx5vJva4nmWPKWE=");
+
+var _c;
+
+$RefreshReg$(_c, "PlayerProvider");
+
+;
+    var _a, _b;
+    // Legacy CSS implementations will `eval` browser code in a Node.js context
+    // to extract CSS. For backwards compatibility, we need to check we're in a
+    // browser context before continuing.
+    if (typeof self !== 'undefined' &&
+        // AMP / No-JS mode does not inject these helpers:
+        '$RefreshHelpers$' in self) {
+        var currentExports = module.__proto__.exports;
+        var prevExports = (_b = (_a = module.hot.data) === null || _a === void 0 ? void 0 : _a.prevExports) !== null && _b !== void 0 ? _b : null;
+        // This cannot happen in MainTemplate because the exports mismatch between
+        // templating and execution.
+        self.$RefreshHelpers$.registerExportsForReactRefresh(currentExports, module.i);
+        // A module can be accepted automatically based on its exports, e.g. when
+        // it is a Refresh Boundary.
+        if (self.$RefreshHelpers$.isReactRefreshBoundary(currentExports)) {
+            // Save the previous exports on update so we can compare the boundary
+            // signatures.
+            module.hot.dispose(function (data) {
+                data.prevExports = currentExports;
+            });
+            // Unconditionally accept an update to this module, we'll check if it's
+            // still a Refresh Boundary later.
+            module.hot.accept();
+            // This field is set when the previous version of this module was a
+            // Refresh Boundary, letting us know we need to check for invalidation or
+            // enqueue an update.
+            if (prevExports !== null) {
+                // A boundary can become ineligible if its exports are incompatible
+                // with the previous exports.
+                //
+                // For example, if you add/remove/change exports, we'll want to
+                // re-execute the importing modules, and force those components to
+                // re-render. Similarly, if you convert a class component to a
+                // function, we want to invalidate the boundary.
+                if (self.$RefreshHelpers$.shouldInvalidateReactRefreshBoundary(prevExports, currentExports)) {
+                    module.hot.invalidate();
+                }
+                else {
+                    self.$RefreshHelpers$.scheduleUpdate();
+                }
+            }
+        }
+        else {
+            // Since we just executed the code for the module, it's possible that the
+            // new exports made it ineligible for being a boundary.
+            // We only care about the case when we were _previously_ a boundary,
+            // because we already accepted this update (accidental side effect).
+            var isNoLongerABoundary = prevExports !== null;
+            if (isNoLongerABoundary) {
+                module.hot.invalidate();
+            }
+        }
+    }
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../node_modules/next/dist/compiled/webpack/harmony-module.js */ "./node_modules/next/dist/compiled/webpack/harmony-module.js")(module)))
+
+/***/ })
+
+})
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9fTl9FLy4vc3JjL2NvbnRleHRzL1BsYXllckNvbnRleHQudHN4Il0sIm5hbWVzIjpbIlBsYXllckNvbnRleHQiLCJjcmVhdGVDb250ZXh0IiwiUGxheWVyUHJvdmlkZXIiLCJjaGlsZHJlbiIsInVzZVN0YXRlIiwiZXBpc29kZUxpc3QiLCJzZXRFcGlzb2RlTGlzdCIsImlzUGxheWluZyIsInNldElzUGxheWluZyIsImN1cnJlbnRFcGlzb2RlSW5kZXgiLCJzZXRDdXJyZW50RXBpc29kZUluZGV4IiwicGxheSIsImVwaXNvZGUiLCJwYXVzZSIsInVzZVBsYXllciIsInVzZUNvbnRleHQiXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFBQTtBQXVCTyxJQUFNQSxhQUFhLGdCQUFHQywyREFBYSxDQUFvQixFQUFwQixDQUFuQztBQUVBLElBQU1DLGNBQWMsR0FBRyxTQUFqQkEsY0FBaUIsT0FBa0I7QUFBQTs7QUFBQSxNQUFmQyxRQUFlLFFBQWZBLFFBQWU7O0FBQUEsa0JBQ1JDLHNEQUFRLENBQUMsRUFBRCxDQURBO0FBQUEsTUFDdkNDLFdBRHVDO0FBQUEsTUFDMUJDLGNBRDBCOztBQUFBLG1CQUVaRixzREFBUSxDQUFDLEtBQUQsQ0FGSTtBQUFBLE1BRXZDRyxTQUZ1QztBQUFBLE1BRTVCQyxZQUY0Qjs7QUFBQSxtQkFHUUosc0RBQVEsQ0FBQyxDQUFELENBSGhCO0FBQUEsTUFHdkNLLG1CQUh1QztBQUFBLE1BR2xCQyxzQkFIa0I7O0FBSzlDLE1BQU1DLElBQUksR0FBRyxTQUFQQSxJQUFPLENBQUNDLE9BQUQsRUFBYTtBQUN4Qk4sa0JBQWMsQ0FBQyxDQUFDTSxPQUFELENBQUQsQ0FBZDtBQUNBRiwwQkFBc0IsQ0FBQyxDQUFELENBQXRCO0FBQ0FGLGdCQUFZLENBQUMsSUFBRCxDQUFaO0FBQ0QsR0FKRDs7QUFNQSxNQUFNSyxLQUFLLEdBQUcsU0FBUkEsS0FBUSxDQUFDRCxPQUFELEVBQWE7QUFDekJKLGdCQUFZLENBQUMsS0FBRCxDQUFaO0FBQ0QsR0FGRDs7QUFJQSxzQkFDRSxxRUFBQyxhQUFELENBQWUsUUFBZjtBQUNFLFNBQUssRUFBRTtBQUNMQyx5QkFBbUIsRUFBbkJBLG1CQURLO0FBRUxKLGlCQUFXLEVBQVhBLFdBRks7QUFHTEUsZUFBUyxFQUFUQSxTQUhLO0FBSUxJLFVBQUksRUFBSkE7QUFKSyxLQURUO0FBQUEsY0FRR1I7QUFSSDtBQUFBO0FBQUE7QUFBQTtBQUFBLFdBREY7QUFZRCxDQTNCTTs7R0FBTUQsYzs7S0FBQUEsYztBQTZCTixTQUFTWSxTQUFULEdBQW9CO0FBQUE7O0FBQUEsb0JBQ3NDQyx3REFBVSxDQUFDZixhQUFELENBRGhEO0FBQUEsTUFDaEJXLElBRGdCLGVBQ2hCQSxJQURnQjtBQUFBLE1BQ1ZGLG1CQURVLGVBQ1ZBLG1CQURVO0FBQUEsTUFDV0osV0FEWCxlQUNXQSxXQURYO0FBQUEsTUFDd0JFLFNBRHhCLGVBQ3dCQSxTQUR4Qjs7QUFHeEIsU0FBTztBQUFFSSxRQUFJLEVBQUpBLElBQUY7QUFBUUYsdUJBQW1CLEVBQW5CQSxtQkFBUjtBQUE2QkosZUFBVyxFQUFYQSxXQUE3QjtBQUEwQ0UsYUFBUyxFQUFUQTtBQUExQyxHQUFQO0FBQ0Y7O0lBSmVPLFMiLCJmaWxlIjoic3RhdGljL3dlYnBhY2svcGFnZXMvX2FwcC42NzFiNjI5MzVhNDM0MTAyYmU3Zi5ob3QtdXBkYXRlLmpzIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgY3JlYXRlQ29udGV4dCwgdXNlQ29udGV4dCwgdXNlU3RhdGUgfSBmcm9tICdyZWFjdCc7XHJcbmltcG9ydCB7IFJlYWN0Tm9kZSB9IGZyb20gJ3JlYWN0JztcclxuXHJcbmludGVyZmFjZSBFcGlzb2RlIHtcclxuICBpZDogbnVtYmVyLFxyXG4gIHRpdGxlOiBzdHJpbmcsXHJcbiAgbWVtYmVyczogc3RyaW5nLFxyXG4gIHB1Ymxpc2hlZF9hdDogRGF0ZSxcclxuICBwdWJsaXNoZWRfYXRfRm9ybWF0dGVkOiBzdHJpbmcsXHJcbiAgdGh1bWJuYWlsOiBzdHJpbmcsXHJcbiAgZGVzY3JpcHRpb246IHN0cmluZyxcclxuICBkdXJhdGlvbjogTnVtYmVyLFxyXG4gIGR1cmF0aW9uRm9ybWF0dGVkOiBzdHJpbmcsXHJcbiAgdXJsOiBzdHJpbmcsXHJcbn1cclxuXHJcbmludGVyZmFjZSBQbGF5ZXJDb250ZXh0RGF0YSB7XHJcbiAgZXBpc29kZUxpc3Q6IEVwaXNvZGVbXTtcclxuICBjdXJyZW50RXBpc29kZUluZGV4OiBudW1iZXI7XHJcbiAgaXNQbGF5aW5nOiBib29sZWFuO1xyXG4gIHBsYXk6IChlcGlzb2RlKSA9PiB2b2lkO1xyXG59XHJcblxyXG5leHBvcnQgY29uc3QgUGxheWVyQ29udGV4dCA9IGNyZWF0ZUNvbnRleHQ8UGxheWVyQ29udGV4dERhdGE+KHt9IGFzIFBsYXllckNvbnRleHREYXRhKTtcclxuXHJcbmV4cG9ydCBjb25zdCBQbGF5ZXJQcm92aWRlciA9ICh7IGNoaWxkcmVuIH0pID0+IHtcclxuICBjb25zdCBbZXBpc29kZUxpc3QsIHNldEVwaXNvZGVMaXN0XSA9IHVzZVN0YXRlKFtdKTtcclxuICBjb25zdCBbaXNQbGF5aW5nLCBzZXRJc1BsYXlpbmddID0gdXNlU3RhdGUoZmFsc2UpO1xyXG4gIGNvbnN0IFtjdXJyZW50RXBpc29kZUluZGV4LCBzZXRDdXJyZW50RXBpc29kZUluZGV4XSA9IHVzZVN0YXRlKDApO1xyXG5cclxuICBjb25zdCBwbGF5ID0gKGVwaXNvZGUpID0+IHtcclxuICAgIHNldEVwaXNvZGVMaXN0KFtlcGlzb2RlXSk7XHJcbiAgICBzZXRDdXJyZW50RXBpc29kZUluZGV4KDApO1xyXG4gICAgc2V0SXNQbGF5aW5nKHRydWUpO1xyXG4gIH1cclxuXHJcbiAgY29uc3QgcGF1c2UgPSAoZXBpc29kZSkgPT4ge1xyXG4gICAgc2V0SXNQbGF5aW5nKGZhbHNlKTtcclxuICB9XHJcblxyXG4gIHJldHVybiAoXHJcbiAgICA8UGxheWVyQ29udGV4dC5Qcm92aWRlciBcclxuICAgICAgdmFsdWU9e3tcclxuICAgICAgICBjdXJyZW50RXBpc29kZUluZGV4LFxyXG4gICAgICAgIGVwaXNvZGVMaXN0LFxyXG4gICAgICAgIGlzUGxheWluZyxcclxuICAgICAgICBwbGF5LFxyXG4gICAgICB9fVxyXG4gICAgPlxyXG4gICAgICB7Y2hpbGRyZW59XHJcbiAgICA8L1BsYXllckNvbnRleHQuUHJvdmlkZXI+XHJcbiAgKTtcclxufVxyXG5cclxuZXhwb3J0IGZ1bmN0aW9uIHVzZVBsYXllcigpe1xyXG4gICBjb25zdCB7IHBsYXksIGN1cnJlbnRFcGlzb2RlSW5kZXgsIGVwaXNvZGVMaXN0LCBpc1BsYXlpbmcgfSA9IHVzZUNvbnRleHQoUGxheWVyQ29udGV4dCk7XHJcblxyXG4gICByZXR1cm4geyBwbGF5LCBjdXJyZW50RXBpc29kZUluZGV4LCBlcGlzb2RlTGlzdCwgaXNQbGF5aW5nIH07XHJcbn1cclxuIl0sInNvdXJjZVJvb3QiOiIifQ==

@@ -1,0 +1,1 @@
+{"ast":null,"code":"import styled from 'styled-components';\nexport const AppWrapper = styled.div`\n  display: flex;\n`;\nexport const AppMain = styled.main`\n  flex: 1;\n`;","map":null,"metadata":{},"sourceType":"module"}
