@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import SliderRC from 'rc-slider';
 import 'rc-slider/assets/index.css';
@@ -17,18 +17,30 @@ import {
   Slider,
   PlayerButtonsDiv,
   PlayerButtons,
+  PlayerButtonsLoop,
+  PlayerButtonsShuffle,
   ButtonPlay,
   PlayerButtonsImg, 
 } from './styles';
+import convertDurationToTimeString from '../../utils/convertDurationToTimeString';
 
 const Player: React.FC = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
+  const [progress, setProgress] = useState(0);
 
   const { 
     episodeList, 
     currentEpisodeIndex, 
     isPlaying,
-    togglePlay, 
+    isLooping,
+    isShuffle,
+    togglePlay,
+    toggleLooping,
+    toggleShuffle,
+    onPlayKeyboard,
+    playNext,
+    playPrevious,
+    enablePreviousAndNextButton, 
   } = usePlayer();
   const episode = episodeList[currentEpisodeIndex];
 
@@ -43,6 +55,19 @@ const Player: React.FC = () => {
       audioRef.current.pause();
     }
   } ,[isPlaying]);
+
+  const setupProgressListener = () => {
+    audioRef.current.currentTime = 0;
+
+    audioRef.current.addEventListener('timeupdate', () => {
+      setProgress(audioRef.current.currentTime);
+    });
+  }
+
+  const handleSeek = (amount: number) => {
+    audioRef.current.currentTime = amount;
+    setProgress(amount);
+  }
 
   return (
     <PlayerContainer>
@@ -70,35 +95,47 @@ const Player: React.FC = () => {
 
       <PlayerFooter empty={!episode ? true : false}>
         <PlayerProgress>
-          <ProgressCurrent>00:00</ProgressCurrent>
+          <ProgressCurrent>{convertDurationToTimeString(progress)}</ProgressCurrent>
             <Slider>
               {!episode ? (
                 <EmptySlider />
               ) : (
                 <SliderRC 
+                  max={episode.duration}
+                  value={progress}
+                  onChange={handleSeek}
                   trackStyle={{background: "#04D361"}}
                   railStyle={{background: "#9F75FF"}}
                   handleStyle={{borderColor: "#04D361"}}
                 />
               )}
             </Slider>
-          <ProgressCurrent>00:00</ProgressCurrent>
+          <ProgressCurrent>{episode?.durationFormatted ?? '00:00:00'}</ProgressCurrent>
         </PlayerProgress>
         
         {episode && (
           <audio 
             ref={audioRef}
             src={episode.url}
-            autoPlay 
+            autoPlay
+            loop={isLooping}
+            onPlay={() => onPlayKeyboard(true)}
+            onPause={() => onPlayKeyboard(false)}
+            onLoadedMetadata={setupProgressListener}
+            onEnded={playNext} 
           />
         )}
 
         <PlayerButtonsDiv>
-          <PlayerButtons disabled={!episode}>
+          <PlayerButtonsShuffle 
+            disabled={!episode || !enablePreviousAndNextButton} 
+            onClick={toggleShuffle}
+            shuflle={isShuffle}
+          >
             <PlayerButtonsImg src="/shuffle.svg" alt="Embaralhar"/>
-          </PlayerButtons>
+          </PlayerButtonsShuffle>
 
-          <PlayerButtons disabled={!episode}>
+          <PlayerButtons disabled={!episode || !enablePreviousAndNextButton} onClick={playPrevious}>
             <PlayerButtonsImg src="/play-previous.svg" alt="voltar"/>
           </PlayerButtons>
 
@@ -110,13 +147,17 @@ const Player: React.FC = () => {
             : <PlayerButtonsImg src="/pause.svg" alt="tocar"/>}
           </ButtonPlay>
 
-          <PlayerButtons disabled={!episode}>
+          <PlayerButtons disabled={!episode || !enablePreviousAndNextButton} onClick={playNext}>
             <PlayerButtonsImg src="/play-next.svg" alt="avançar"/>
           </PlayerButtons>
 
-          <PlayerButtons disabled={!episode}>
-            <PlayerButtonsImg src="/repeat.svg" alt="repetir"/>
-          </PlayerButtons>
+          <PlayerButtonsLoop
+            disabled={!episode} 
+            onClick={toggleLooping}
+            loop={isLooping}
+          >
+            <PlayerButtonsImg src="/repeat.svg" alt="repetir" color="#000"/>
+          </PlayerButtonsLoop>
         </PlayerButtonsDiv>
       </PlayerFooter>
 

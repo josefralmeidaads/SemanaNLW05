@@ -1,7 +1,11 @@
 import styled, { css } from 'styled-components';
 
-interface ButtoProps {
-  play?: boolean;
+interface ButtonLoopProps {
+  loop: boolean;
+}
+
+interface ButtonShuffleProps {
+  shuflle: boolean;
 }
 
 interface FooterPlayerProps {
@@ -128,10 +132,49 @@ export const PlayerButtons = styled.button`
 
  &:disabled{
    cursor: not-allowed;
+   opacity: 0.5;
  }
  &:hover:not(:disabled) {
    filter: brightness(0.5);
  }
+`;
+
+export const PlayerButtonsLoop = styled.button<ButtonLoopProps>`
+  background: transparent;
+  border: 0;
+  font-size: 0%;
+  transition: filter 0.3s;
+
+  &:disabled{
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+  &:hover:not(:disabled) {
+    filter: brightness(0.5);
+  }
+
+  ${props => props.loop && css`
+    filter: invert(0.35) sepia(1) saturate(10) hue-rotate(60deg);
+  `}
+`;
+
+export const PlayerButtonsShuffle = styled.button<ButtonShuffleProps>`
+  background: transparent;
+  border: 0;
+  font-size: 0%;
+  transition: filter 0.3s;
+
+  &:disabled{
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+  &:hover:not(:disabled) {
+    filter: brightness(0.5);
+  }
+
+  ${props => props.shuflle && css`
+    filter: invert(0.35) sepia(1) saturate(10) hue-rotate(60deg);
+  `}
 `;
 
 export const ButtonPlay = styled.button`
@@ -145,6 +188,7 @@ export const ButtonPlay = styled.button`
  transition: filter 0.3s;
  &:disabled{
    cursor: not-allowed;
+   opacity: 0.5;
  }
  &:hover:not(:disabled) {
    filter: brightness(0.5);

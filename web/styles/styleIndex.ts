@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 
 export const HomePage = styled.div`
   padding: 0 4rem;
@@ -105,7 +105,6 @@ export const EpisodeItemButton = styled.button`
   position: absolute;
   right: 2rem;
   bottom: 2rem;
-
   width: 2.5rem;
   height: 2.5rem;
   background: ${props => props.theme.colors.white};
@@ -175,6 +174,7 @@ export const TdEpisodes = styled.td`
         text-decoration: underline;
       }
     }
+  
 `;
 
 export const AllEpisodesButton = styled.button`

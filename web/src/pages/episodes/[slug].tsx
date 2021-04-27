@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
@@ -18,6 +18,7 @@ import {
   Header,
   Description, 
 } from '../../styles/stylesEpisode';
+import { usePlayer } from '../../contexts/PlayerContext';
 
 type Episode = {
   id: string,      
@@ -37,6 +38,7 @@ type EpisodeProps = {
 }
 
 const episodes: React.FC<EpisodeProps> = ({ episode }: EpisodeProps) => {
+  const { play } = usePlayer();
   return (
     <Container>
       <Episode>
@@ -54,7 +56,7 @@ const episodes: React.FC<EpisodeProps> = ({ episode }: EpisodeProps) => {
             objectFit="cover"
           />
 
-          <ButtonPlay type="button">
+          <ButtonPlay type="button" onClick={() => play(episode)}>
             <img src="/play.svg" alt="Tocar episódio"/>
           </ButtonPlay>
         </ThumbnailContainer>
@@ -112,7 +114,7 @@ export const getStaticProps: GetStaticProps = async(context) => {
     description: data.description,
     duration: Number(data.file.duration),
     durationFormatted: convertDurationToTimeString(Number(data.file.duration)),
-    url: Number(data.file.url),
+    url: String(data.file.url),
   }
   return {
     props: {
