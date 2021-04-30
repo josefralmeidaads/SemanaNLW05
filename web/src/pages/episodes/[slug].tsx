@@ -19,6 +19,7 @@ import {
   Description, 
 } from '../../styles/stylesEpisode';
 import { usePlayer } from '../../contexts/PlayerContext';
+import Head from 'next/head';
 
 type Episode = {
   id: string,      
@@ -41,6 +42,9 @@ const episodes: React.FC<EpisodeProps> = ({ episode }: EpisodeProps) => {
   const { play } = usePlayer();
   return (
     <Container>
+      <Head>
+        <title>{episode.title}</title>
+      </Head>
       <Episode>
         <ThumbnailContainer>
           <Link href="/">

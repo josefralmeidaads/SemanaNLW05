@@ -1,29 +1,52 @@
-import { Request, Response } from "express";
-import { getCustomRepository } from "typeorm";
-import SettingRepository from "../repositories/SettingRepository";
+import { Request, Response, Router } from "express";
+import SettingsService from "../services/SettingsService";
 
-export default class SettingController{
-  async index(request: Request, response: Response) {
-    const settingsRepository = getCustomRepository(SettingRepository);
-    const settings = await settingsRepository.find();
+const router = Router();
+const settingsService = new SettingsService();
 
+  router.get('' , async(request: Request, response: Response) => {
+    const settings = await settingsService.index();
     return response.json(settings);
-  }
+  });
 
-  async create(request: Request, response: Response){
-    const { chat, username } = request.body;
-    const settingsRepository = getCustomRepository(SettingRepository);
-
-    const setting = settingsRepository.create({
-      chat,
-      username,
-    });
-    
+  router.get('/:username', async(request: Request, response: Response) => {
+    const { username } = request.params;
     try{
-      await settingsRepository.save(setting);
+      const setting = await settingsService.findByUserName(username);
       return response.json(setting);
     }catch(err){
-      return response.json({ message: 'Não foi possível criar os dados!' });
+      return response.status(400).json(err.message)
     }
-  }
-}
+  });
+
+  router.post( '' , async(request: Request, response: Response) => {
+    const { chat, username } = request.body;
+    try{
+      const setting = await settingsService.create({chat, username});
+      return response.json(setting);
+    }catch(err){
+      return response.status(400).json(err.message);
+    }
+  });
+
+  router.delete('/:id', async(request: Request, response: Response) => {
+    const { id } = request.params;
+    try{
+      await settingsService.delete(id);
+    }catch(err){
+      return response.status(400).json(err.message)
+    }
+  });
+
+  router.put('/:id', async(request: Request, response: Response) => {
+    const { id } = request.params;
+    const { username, chat } = request.body;
+    try{
+      const setting = await settingsService.updateChat({ id, username, chat });
+      return response.json(setting);
+    }catch(err){
+      return response.status(400).json(err.message);
+    }
+  });
+
+export default router;

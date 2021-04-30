@@ -1,13 +1,12 @@
-import express, { Request, Response } from 'express';
-import { getCustomRepository } from 'typeorm';
-import SettingRepository from './repositories/SettingRepository';
+import express from 'express';
 import SettingController from './controllers/SettingController';
+import UserController from './controllers/UserController';
+import MessageController from './controllers/MessageController';
 
 const routes = express.Router();
 
-const settingController = new SettingController();
-
-routes.get('/settings', settingController.index);
-routes.post('/settings', settingController.create);
+routes.use('/messages', MessageController);
+routes.use('/settings', SettingController);
+routes.use('/users', UserController);
 
 export default routes;

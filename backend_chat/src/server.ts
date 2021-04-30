@@ -1,12 +1,4 @@
-import './database/connection';
-import express from 'express';
-import cors from 'cors';
-import routes from './routes';
+import { http } from './http';
+import "./websockets/client";
 
-const app = express();
-
-app.use(cors());
-app.use(express.json());
-app.use(routes);
-
-app.listen(3333, () => console.log('Servidor Iniciado na porta 3333 🚀'));
+http.listen(3333, () => console.log('Servidor Iniciado na porta 3333 🚀'));

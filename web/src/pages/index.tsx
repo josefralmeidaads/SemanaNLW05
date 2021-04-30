@@ -1,5 +1,6 @@
 import { GetStaticProps } from 'next';
 import Image from 'next/image';
+import Head from 'next/head';
 import Link from 'next/link';
 import { format, parseISO } from 'date-fns';
 import ptBR from 'date-fns/locale/pt-BR';
@@ -51,6 +52,9 @@ export default function Home({ allEpisodes, latestEpisodes }: HomeProps){
 
   return (
     <HomePage>
+      <Head>
+        <title>Home | PodCastTr</title>
+      </Head>
       <LatestEpisodes>
         <h2>Últimos lançamentos</h2>
 
