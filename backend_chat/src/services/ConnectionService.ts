@@ -19,9 +19,27 @@ export default class ConnectionService {
 
   async findByUser(user_id: string): Promise<IConnection> {
     const connectionsRepository = getCustomRepository(ConnectionRepository);
-    const connection = connectionsRepository.findOne({ user_id });
+    const connection = await connectionsRepository.findOne({ user_id });
 
     return connection;
+  }
+
+  async findBySocketId(socket_id: string): Promise<IConnection> {
+    console.log('Socket', socket_id);
+    const connectionsRepository = getCustomRepository(ConnectionRepository);
+    const connection = await connectionsRepository.findOne({socket_id});
+    console.log('Connection ->', connection);
+    return connection;
+  }
+
+  async findAllWithoutAdmin():Promise<IConnection[]> {
+    const connectionsRepository = getCustomRepository(ConnectionRepository);
+    const connections = await connectionsRepository.find({
+      where: { admin_id: null },
+      relations: ['user'],
+    })
+
+    return connections;
   }
 
   async create({ admin_id, user_id, socket_id, id }: IConnection): Promise<IConnection>{
