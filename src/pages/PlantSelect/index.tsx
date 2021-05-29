@@ -36,6 +36,16 @@ const PlantSelect: React.FC = () => {
   const [plants_environments, setPlants_environments] = useState<PlantEnvironments[]>([]);
   const [plants, setPlants] = useState<PlantsProps[]>([]);
   const [environmentsSelected, setEnvironmentsSelected] = useState('all');
+  const [filteredPlants, setFilteredPlants] = useState('all');
+
+  const handleEnvironmentSelect = (plant: string) => {
+    setEnvironmentsSelected(plant);
+
+    if(plant === 'all'){
+      return setFilteredPlants(plant);
+    }
+  }
+
   
   useEffect(() => {
     const loadPlants_environments = async() => {
@@ -53,10 +63,6 @@ const PlantSelect: React.FC = () => {
     }
     loadPlants();
   }, [])
-
-  const handleEnvironmentSelect = (value: string) => {
-    setEnvironmentsSelected(value);
-  }
 
   return (
     <Container>
